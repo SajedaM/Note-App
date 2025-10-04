@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../models/note.dart';
 import 'add_note_page.dart';
+import 'dart:ui' as ui;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,9 +29,6 @@ class _HomePageState extends State<HomePage> {
       notes.add(note);
     });
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       final note = notes[index];
                       final color = cardColors[Random().nextInt(cardColors.length)];
-                      final isSelected = selectedIndex == index;
+                      //final isSelected = selectedIndex == index;
         
                       return GestureDetector(
                         onTap: () {
@@ -200,6 +199,8 @@ class _HomePageState extends State<HomePage> {
             topRight: Radius.circular(30),
           ),
         ),
+        child: Directionality(
+          textDirection: ui.TextDirection.ltr,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -226,7 +227,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

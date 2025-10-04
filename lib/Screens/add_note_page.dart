@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../models/note.dart';
 
@@ -34,8 +35,8 @@ class _AddNotePageState extends State<AddNotePage> {
 
     if (title.isEmpty || content.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Enter note !')),
-      );
+        const SnackBar(content: Text('Enter note !'),
+      ));
       return;
     }
 
@@ -60,7 +61,7 @@ class _AddNotePageState extends State<AddNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.note != null ? 'Edit Note' : 'Add Note'),
+        title: Text(widget.note != null ? 'Edit Note'.tr() : 'Add Note'.tr()),
         backgroundColor: const Color(0xff092462),
 
       ),
@@ -70,16 +71,16 @@ class _AddNotePageState extends State<AddNotePage> {
           children: [
             TextField(
               controller: titleController,
-              decoration: const InputDecoration(
-                labelText: 'Title',
+              decoration: InputDecoration(
+                labelText: 'Title'.tr(),
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: contentController,
-              decoration: const InputDecoration(
-                labelText: 'Content',
+              decoration: InputDecoration(
+                labelText: 'Content'.tr(),
                 border: OutlineInputBorder(),
               ),
               maxLines: 6,
@@ -91,7 +92,7 @@ class _AddNotePageState extends State<AddNotePage> {
                 backgroundColor: const Color(0xff0c2c83),
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
               ),
-              child: Text(widget.note != null ? 'Edit' : 'Add',
+              child: Text(widget.note != null ? 'Edit'.tr() : 'Add'.tr(),
               style: TextStyle(color: Colors.white),),
             ),
           ],
